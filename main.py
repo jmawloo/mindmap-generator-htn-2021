@@ -4,12 +4,12 @@ from azure.cognitiveservices.vision.computervision.models import OperationStatus
 from msrest.authentication import CognitiveServicesCredentials
 import time
 import os
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-
+from semantic_similarity import parseText
 
 app = Flask(__name__)
 CORS(app)
@@ -78,9 +78,18 @@ def find():
     # calling the extractText function
     result = extractText(image_url)
 
-    return jsonify({'result': result})
+    try:
+      markdown = parseText(result)
+      print("Success")
+      return jsonify({'result': markdown}) # return string.
+
+    except Exception as err:
+      print("An error occurred:")
+      print(err)
+      return jsonify({'error': str(err)}) # return error string
   
   else:
+    # Test 
     image = "im-received.jpg"
     result = extractText(image)
     return jsonify({'result': result})

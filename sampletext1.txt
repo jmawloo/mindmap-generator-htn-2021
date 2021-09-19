@@ -1,0 +1,108 @@
+(Valavan Manohararajah)
+
+AI computation increasing exponentially - 25,000 faster than Moore's law in terms of petaflops
+
+
+Currently Hiring - International (incl Japan)
+
+Largest Chip -> WSE. Taiwan Semiconductor Manufacturing Corporation.
+
+TSMC WSE-2nd gen too. WSE-2 slightly more than 2x performance increase compared to WSE-1.
+
+WSE-2 vs A100 -> Increase in almost every aspect.
+
+Cerebras CS-2. Watercooling CPU engine. 
+
+CS-2 2x wall clock speed improvement compared to CS-1.
+
+
+For heating and cooling -> CS-2 consumes more power? -> Design does give power savings. 
+
+CAD (Computer-aided design)
+
+Limited memory on chip. One mode of execution - nothing leaves the wafer. Another mode is layer-by-layer - executing using resources outside of chips.
+
+
+Wafer Scale Engine -> Computational part (tile) -> die -> wafer part
+
+Dealing with Defects: 
+    Uniform small core architecture to enable redundancy -> address yield at low cost.
+    Redundant cores to replace defective cores w/ extra links to reconnect fabric.
+    Completely transparent to user + SW.
+    80,000 cores w/ 20,000 defective??
+
+Architecture Optimized for Deep Learning
+	Flexible high-performance cores - optimized tensor ops for lin alg processing
+		Datablow HW designed for sparsity
+	    Supports evolving Nerual Network architectures @ high performance.
+	Fully distributed local memory
+	Hi-bandwidth low-latency interconnect
+	Computation data-flow style.
+	
+Sparse Neural Networks:
+	Large zeros in network (weights).
+	Wasted power consumption + cycles
+	Activation Sparsity: Natural sparsity from Common ML rtechniques, backward pass, forward pass.
+	Weight Sparsity: Modern NN high redundancy by design. Over-parametrization -> weight sparsity. 
+		Sparsity dist: Active research in dynamic weight computation -> retraining can grow/drop weights.
+	Core designed for sparsity:
+		Data flow scheduling in hardware
+		Dataflow sparsity harvesting
+		Enabled by fine-grained execution datapaths.
+
+Accelerate Deep Learning with ~1M cores:
+* Use blend of parallelization strats:
+	All types of model + data parallel. 
+	Rely on model parallel 1st since it doesn't depend on batch size.
+	Add data parallel for small models.
+	Dynamicall choose exec strat optimized for diff models -> Dimensions(Data parallel, Model parallel - within NN layer, Model parallel -> Pipelined.
+Model Parallel - Within NN layer
+Model Parallel - Layer pipelined - each layer alloc'd job size based on needs.
+
+Data Parallel - Replicate layers for faster performance on smaller models.
+
+Can use cores to do other math besides deep learning!
+
+
+SW stack for WSE:
+* Input: Spec in ML Framework (Tensorflow, PyTorch).
+	Extract: Convert framework IR to Lin Alg IR (LAIR) graph
+	Match: Cover LAIR graph w/ kernels to obtain kern graph.
+	Place & Route: Map kern graph to PEs + link up. Where they're placed on chip, how chips are covered, etc. (e.g. Give lot more wafer to leaf nodes of NN versus root nodes). Route figures how to connect nodes together.
+		Similarities w/ FPGA routing problem.
+	Output: Executable for CS-1. Feed training data thru.
+
+Deployments:
+	Laboratories, computing centre, military installations.
+	
+	
+HPC Workloads @ Wafer Scale
+	Paper: Fast Stencil-Code Computation on a Wafer-Scale Processor.
+	CS-1 200x faster than Joule Supercomputer - faster regardless of size of CPU / GPU (cluster).
+	Memory bandwidth interconnections.
+
+3D integration: CS-3 CS-4
+
+Network interface managed by separate HW or directly on wafer chip?
+	Beside wafer are some FPGAs designed to handle network traffic. (not part of wafer).
+
+Optimized for which floating points?
+	FP-16 and FP-32 both handled. Some more optimized for FP-16.
+	Run 2 for every 1 FP-32 instruct.
+	Follow-up: Can't support generic FP standards 
+
+Wafer scaling - why happening now?
+	Decreasing wafer scales every generation. 
+	High yield; repeated thing??
+	Demand for new generations - expensive and exotic.
+
+Loading instructions: Both loading to separate memory and setting bits on SRAM.
+
+Uneven distribution of resources to neural network computation.
+	
+In future, offer products to consumers or not?
+	Founder's opinions on matter -> they worked on supercomputers as background.
+	Don't see it being accessible to consumer market -> except for cloud computing infrastructure.
+
+Cost distribution: How much is put in wafer versus system integration
+	Not really known. Also distributed to maintenance and packaging etc.
