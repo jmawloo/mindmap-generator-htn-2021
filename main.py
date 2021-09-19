@@ -16,8 +16,6 @@ CORS(app)
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-subscription_key = os.environ['subscription_key']
-endpoint = os.environ['endpoint']
 
 vision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
@@ -48,10 +46,6 @@ def extractText(read_image):
         result = result + " " + line.text
   
   return result
-  
-
-
-  
 
 # routes
 @app.route("/", methods=["GET", "POST"])
@@ -60,6 +54,7 @@ def main():
 
 @app.route("/find", methods=["POST", "GET"])
 def find():
+  result = ""
   if request.method == 'POST':
     image = request.files['image']
     # image = request.form.get('image')
@@ -77,23 +72,22 @@ def find():
     image_url = "./uploads/" + filename
     # calling the extractText function
     result = extractText(image_url)
-
-    try:
-      markdown = parseText(result)
-      print("Success")
-      return jsonify({'result': markdown}) # return string.
-
-    except Exception as err:
-      print("An error occurred:")
-      print(err)
-      return jsonify({'error': str(err)}) # return error string
   
   else:
     # Test 
     image = "im-received.jpg"
     result = extractText(image)
-    return jsonify({'result': result})
+  
+  # Parse text and return status here:
+  try:
+    markdown = parseText(result)
+    print("Success")
+    return jsonify({'result': markdown}) # return string.
 
+  except Exception as err:
+    print("An error occurred:")
+    print(err)
+    return jsonify({'error': str(err)}) # return error string
 
 
 # once again lol
