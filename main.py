@@ -21,9 +21,9 @@ vision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subs
 
 # function to call read api from azure computer vision
 def extractText(read_image):
-  read_response = vision_client.read_in_stream(
-    open(read_image, 'rb'), raw=True)
-
+  f = open(read_image, 'rb')
+  read_response = vision_client.read_in_stream(f, raw=True)
+  f.close()
   result = ''
 
   # operation location
@@ -75,7 +75,7 @@ def find():
   
   else:
     # Test 
-    image = "im-received.jpg"
+    image = "img1.jpg"
     result = extractText(image)
   
   # Parse text and return status here:
@@ -95,4 +95,5 @@ def find():
 # everytime I forget to add this line of code
 # it's necessary for running flask apps on repl.it
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=8000)
+  app.run(host="0.0.0.0", port=8000)
+  
