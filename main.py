@@ -16,6 +16,10 @@ CORS(app)
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+# NOTE: DO NOT COMMIT THIS PART!
+subscription_key = "0409316ef1964bf993dccfc81173cfdf"
+endpoint = "https://handwriting-htn-2021.cognitiveservices.azure.com/"
+## END
 
 vision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 

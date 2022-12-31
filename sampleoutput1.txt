@@ -1,0 +1,65 @@
+- mode
+	- fp
+		- wse
+			- wafer scale engine computational part
+				- completely transparent
+					- repeated thing
+						- map kern graph
+						- handle network traffic
+							- vs increase
+								- setting bits
+						- fpga routing problem
+						- within nn layer
+						- data flow scheduling
+					- wafer scaling
+					- math deep learning
+					- scale processor
+					- flow style
+					- wafer scale
+					- supports evolving nerual network architectures
+				- data parallel
+				- add data parallel
+			- sparse neural networks
+			- lin alg ir
+			- neural network computation
+			- dynamic weight computation retraining
+			- enable redundancy address yield
+			- cover lair graph w
+			- nn versus root nodes
+				- incl japan
+					- computation increasing exponentially
+					- executing using resources outside
+						- matter
+							- worked
+						- latency interconnect
+							- leaves
+							- model parallel 1st
+					- cooling cs
+						- common ml rtechniques
+						- datablow designed
+							- network interface managed
+					- support generic fp standards
+						- job size based
+							- model parallel
+								- wasted power consumption
+							- wall clock speed improvement compared
+							- taiwan semiconductor manufacturing corporation
+					- optimized
+						- consumer market
+							- grained execution datapaths
+							- cores w
+							- floating points
+							- run
+							- use blend
+					- smaller models
+			- sw stack
+			- military installations
+			- replace defective cores w
+			- dynamicall choose exec strat optimized
+				- wafer versus system integration
+			- performance increase compared
+			- watercooling cpu engine
+			- faster
+			- optimized tensor ops
+		- accelerate deep learning
+		- feed training data thru

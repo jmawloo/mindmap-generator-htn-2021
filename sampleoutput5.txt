@@ -1,0 +1,11 @@
+- n
+	- pop por pop
+		- planes x
+			- v eq xy plane
+				- pope p2 po note
+					- get et
+					- plane scalar equation
+				- normal vectors
+			- given points
+		- normal vector determines
+	- dist blw planes make

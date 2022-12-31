@@ -1,0 +1,13 @@
+- first derivative test
+	- undefined
+		- mark
+		- function
+		- second derivative test
+	- set
+	- local minimum
+	- classify critical number e
+	- local extreme values
+	- find
+	- classifying local extreme values
+	- local max value
+	- c
